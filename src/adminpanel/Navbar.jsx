@@ -25,8 +25,12 @@ export const Navbar = () => {
          <Link to='/viewlesson' class="nav-link">View Lesson</Link>
         </li>
         <li class="nav-item">
+          <Link to='/signup' class="nav-link">Signup</Link>
+        </li>
+        <li class="nav-item">
          <Link to='/adminlogin' class="nav-link">Logout</Link>
         </li>
+              
       </ul>
     </div>
   </div>

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Studentnavbar } from "./Studentnavbar";
+import { Studentnavbar } from "../studentpanel/Studentnavbar";
 
 function Signup() {
   const [form, setForm] = useState({
@@ -50,10 +50,17 @@ function Signup() {
             batchname: batch,
           },
         })
-        .then((res) => {
-          console.log("Student API result:", res.data);
-          setStudentList(res.data || []);
-        })
+          .then((res) => {
+            console.log("Student API result:", res.data);
+            const uniqueStudents = Array.from(new Set(
+              res.data.map(student => student.name.trim().toLowerCase())
+            )).map(name => {
+              return res.data.find(student => student.name.trim().toLowerCase() === name);
+            });
+
+            setStudentList(uniqueStudents || []);
+          })
+
         .catch((err) => {
           console.error("Error fetching students:", err);
           setStudentList([]);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Studentnavbar } from "./Studentnavbar";
+import { Studentnavbar } from "../studentpanel/Studentnavbar";
 
 export const Adminlogin = () => {
     const [email, setEmail] = useState("");
